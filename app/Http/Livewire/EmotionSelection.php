@@ -5,11 +5,13 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\DailyEmotion;
 use App\Models\Emotion;
+use App\Models\JournalEntry;
 
 class EmotionSelection extends Component
 {
     public $selectedEmotion;
     public $emotions;
+    public $writtenEntry;
 
     public function mount()
     {
@@ -23,18 +25,18 @@ class EmotionSelection extends Component
         $dailyEmotion = new DailyEmotion();
         $dailyEmotion->user_id = auth()->user()->id;
         $dailyEmotion->emotion_id = $this->selectedEmotion;
-        // Otros campos necesarios
+
+        $dailyEmotion->journal_entry = $this->writtenEntry;
+        // dd($this->writtenEntry);
+
         $dailyEmotion->save();
         
         
-        $this->reset(['selectedEmotion']); // Limpia el valor seleccionado
+        $this->reset(['selectedEmotion']);
+        // $this->reset(['writtenEntry']);
 
-        session()->flash('message', 'Emoción guardada exitosamente.');
+        session()->flash('message', 'Registros guardados exitosamente.');
 
-        // Puedes emitir un evento para notificar a otros componentes sobre cambios
-        // $this->emit('emotionSaved');
-
-        // $this->emitSelf('refreshComponent'); // Refrescar este componente
     }
 
 

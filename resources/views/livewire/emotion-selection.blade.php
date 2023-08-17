@@ -12,6 +12,16 @@
                 <option value="{{ $emotion->id }}">{{ $emotion->name }}</option>
             @endforeach
         </select>
-        <button type="submit" id="submitEmotion">Guardar</button>
-    </form>
+        {{-- </form> --}}
+        
+        <div>
+            <h2>Registro de Pensamientos</h2>
+            {{-- <form wire:submit.prevent="saveJournalEntry"> --}}
+                @csrf
+                <textarea wire:model="writtenEntry" maxlength="256"></textarea>
+                {{-- <button type="submit">Guardar</button> --}}
+            </div>
+            <button type="submit" id="submitEmotion">Guardar</button>
+        </form>
+
 </div>
