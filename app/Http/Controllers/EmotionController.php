@@ -63,10 +63,10 @@ class EmotionController extends Controller
         //
     }
 
-    public function chooseEmotion()
-    {
-        $emotions = Emotion::all();
+    // public function chooseEmotion()
+    // {
+    //     $emotions = Emotion::all();
 
-        return view('dashboard', compact('emotions'));
-    }
+    //     return view('dashboard', compact('emotions'));
+    // }
 }

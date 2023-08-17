@@ -1,4 +1,5 @@
 <x-app-layout>
+    @livewireScripts
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -12,16 +13,9 @@
     
     <div class="container">
         <div class="mt-4">
-            <h2>Selecciona tu emoción del día</h2>
-            <form method="post" action="{{ route('save-emotion') }}">
-                @csrf
-                <select name="selected_emotion">
-                    @foreach($emotions as $emotion)
-                    <option value="{{ $emotion->id }}">{{ $emotion->name }}</option>
-                    @endforeach
-                </select>
-                <button type="submit">Guardar</button>
-            </form>
+            <div class="mt-4">
+                @livewire('emotion-selection')
+            </div>
         </div>
     </div>
 

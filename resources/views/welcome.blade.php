@@ -136,5 +136,7 @@
                 </div>
             </div>
         </div>
+        @livewireScripts
+
     </body>
 </html>
