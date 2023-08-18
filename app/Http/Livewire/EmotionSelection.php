@@ -30,14 +30,14 @@ class EmotionSelection extends Component
         $dailyEmotion->save();
         
         // Realizar la solicitud a la API de OpenAI
-        $yourApiKey = "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";
-        $client = OpenAI::client($yourApiKey);
+        // $yourApiKey = "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";
+        // $client = OpenAI::client($yourApiKey);
         
-        $result = $client->completions()->create([
-            'model' => 'text-davinci-003',
-            'prompt' => $this->writtenEntry,
-            'max_tokens' => 5
-        ]);
+        // $result = $client->completions()->create([
+        //     'model' => 'text-davinci-003',
+        //     'prompt' => $this->writtenEntry,
+        //     'max_tokens' => 5
+        // ]);
 
         // Aquí podrías guardar la respuesta de OpenAI en una base de datos si deseas
         // $journalEntry = new JournalEntry();

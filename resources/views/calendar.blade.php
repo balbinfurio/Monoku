@@ -20,7 +20,15 @@
 
     <script>
         $(document).ready(function() {
+            var dailyEmotion = @json($events);
             $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev, next today',
+                    center: 'title',
+                    right: 'month, agendaWeek, agendaDay',
+
+                },
+                events: dailyEmotion
 
             })
         });
