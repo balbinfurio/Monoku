@@ -8,6 +8,7 @@ use App\Http\Controllers\OpenAIController;
 use App\Models\JournalEntry;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
