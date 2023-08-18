@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\EmotionSelection;
 use App\Http\Controllers\EmotionController;
+use App\Http\Controllers\OpenAIController;
 use App\Models\JournalEntry;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [OpenAIController::class, 'index']);
+Route::post('/ai', [OpenAIController::class, 'makeRequest']);
+    // return view('welcome');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
