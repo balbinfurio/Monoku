@@ -15,7 +15,7 @@ class OpenAIController extends Controller
 
     public function makeRequest(Request $request)
     {
-        $yourApiKey = '';
+        $yourApiKey = "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";
         $client = OpenAI::client($yourApiKey);
 
         $result = $client->completions()->create([
