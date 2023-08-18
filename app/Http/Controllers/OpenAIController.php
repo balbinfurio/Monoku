@@ -15,13 +15,13 @@ class OpenAIController extends Controller
 
     public function makeRequest(Request $request)
     {
-        $yourApiKey = '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';
+        $yourApiKey = '';
         $client = OpenAI::client($yourApiKey);
 
         $result = $client->completions()->create([
             'model' => 'text-davinci-003',
             'prompt' => $request->prompt,
-            'max_tokens' => 5
+            'max_tokens' => 1000
         ]);
 
         return $result['choices'][0]['text'];
