@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Livewire\EmotionSelection;
 use App\Http\Controllers\EmotionController;
 use App\Http\Controllers\OpenAIController;
@@ -44,5 +45,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+//calendar
+Route::get('calendar', [CalendarController::class, 'index'])->name('calendar.index');
+
 
 require __DIR__.'/auth.php';
