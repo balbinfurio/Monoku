@@ -19,9 +19,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [OpenAIController::class, 'index']);
-Route::post('/ai', [OpenAIController::class, 'makeRequest']);
-    // return view('welcome');
+Route::get('/', function () {
+    return view('app');
+});
+// Route::get('/', [OpenAIController::class, 'index']);
+// Route::post('/ai', [OpenAIController::class, 'makeRequest']);
+
 
 
 Route::get('/dashboard', function () {
