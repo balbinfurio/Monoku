@@ -21,6 +21,14 @@
                     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('calendar')">
                         {{ __('Profile') }}
                     </x-nav-link>
+                    {{-- <x-nav-link>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                                {{ __('Logout') }}
+                            </x-dropdown-link>
+                        </form>
+                    </x-nav-link> --}}
                 </div>
             </div>
 
@@ -37,6 +45,15 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <x-nav-link>
+                    <form method="POST" action="{{ route('logout') }}" class="mt-2">
+                        @csrf
+                        <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                            {{ __('Logout') }}
+                        </x-dropdown-link>
+                    </form>
+                </x-nav-link>
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
