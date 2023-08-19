@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+#dash-first {
+    margin-top: 0px;
+    height: 300px;
+}
+
+#dash-sec {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    height: 300px;
+}
+
+.selected-emoji {
+    transform: scale(1.4);
+    transition: transform 0.5s ease-in-out;
+}
+
+#text-entry {
+    margin-left: 0px; /* Mueve el cuadro de texto hacia la derecha */
+}
+
+#submitEmotion {
+    margin-top: 8px; /* Ajusta la distancia hacia abajo según tus preferencias */
+    margin-left: auto; /* Centra horizontalmente el botón */
+    margin-right: auto;
+    display: block; /* Convierte el botón en un bloque para centrarlo */
+}
+
+
+
 .mt-2 {
     /* margin-top: 0px;  */
     /* background-color: red; */

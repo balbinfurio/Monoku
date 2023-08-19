@@ -46,7 +46,7 @@
                 const ctx = document.getElementById('myChart');
 
                 const events = @json($events);
-                // console.log(events);
+                console.log(events);
 
                 const emojiToValue = {
                     '😞': 1,
@@ -107,7 +107,7 @@
 
 <style>
     .emoji-event {
-        font-size: 33px; /* Ajusta el tamaño del emoji según tus preferencias */
+        font-size: 33px; 
     }
 </style>
 
