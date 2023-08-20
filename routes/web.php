@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [OpenAIController::class, 'index']);
-Route::post('/ai', [OpenAIController::class, 'makeRequest']);
-    // return view('welcome');
 
 
 Route::get('/dashboard', function () {
@@ -30,26 +27,21 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/save-emotion', [EmotionSelection::class, 'saveEmotion'])->name('save-emotion');
-    // Route::post('/save-journal-entry', [JournalEntryLive::class, 'saveJournalEntry'])->name('save-journal-entry');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('calendar', [CalendarController::class, 'index'])->name('calendar.index');
 });
-
-Route::get('/calendar', function () {
-    return view('calendar');
-})->middleware(['auth', 'verified'])->name('calendar');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-
-
-//calendar
-Route::get('calendar', [CalendarController::class, 'index'])->name('calendar.index');
-
 
 require __DIR__.'/auth.php';
+
+// Route::middleware('auth')->group(function () {
+    //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // });
+    
+    
+    // Route::get('/', [OpenAIController::class, 'index']);
+    // Route::post('/ai', [OpenAIController::class, 'makeRequest']);
+        // return view('welcome');

@@ -1,3 +1,98 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#dash-first {
+    margin-top: 0px;
+    height: 300px;
+}
+
+#dash-sec {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    height: 300px;
+}
+
+.selected-emoji {
+    transform: scale(1.4);
+    transition: transform 0.5s ease-in-out;
+}
+
+#text-entry {
+    margin-left: 0px; 
+}
+
+#submitEmotion {
+    margin-top: 8px; 
+    margin-left: auto; 
+    margin-right: auto;
+    display: block; 
+}
+
+#dash-sec {
+    margin: 0;
+    padding: 0;
+    /* height: auto; */
+    height: 400px;
+}
+
+#dash-third {
+    position: absolute; /* Cambiar a absolute o relative según tu diseño */
+    left: 0; /* Mover hacia la izquierda */
+     /* Mantener centrado verticalmente */
+    transform: translateY(-50%); /* Alinear verticalmente */
+    margin: 0;
+    padding: 0;
+    height: 50px;
+}
+
+
+#dash-fourth {
+    position: absolute; /* Cambiar a absolute o relative según tu diseño */
+    right: 0; /* Mover hacia la izquierda */
+    transform: translateY(-50%); /* Alinear verticalmente */
+    margin: 0;
+    padding: 0;
+    height: 50px;
+}
+
+#openAI-response {
+    position: absolute;
+    left: 0;
+    top: 120%;
+    transform: translateY(10px), translateX(10px);
+    
+    padding: 10px;
+    border-radius: 8px;
+    width: 700px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+}
+
+    #summary {
+    position: absolute;
+    right: 0;
+    top: 120%;
+    transform: translateY(10px), translateX(10px);
+    
+    padding: 10px;
+    border-radius: 8px;
+    width: 700px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+    
+
+
+.mt-2 {
+    /* margin-top: 0px;  */
+    /* background-color: red; */
+    /* width: 10px; */
+    height: 90px;
+    /* border-radius: 50%; */
+    /* display: inline-block; */
+}
+
+#footer {
+    margin-top: 250px;
+}
