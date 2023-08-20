@@ -11,6 +11,12 @@
         </div>
     @endif
 
+    @if (session()->has('openAIResponse'))
+        <div class="bg-green-300 p-4 rounded-lg">
+            <p>{{ session('openAIResponse') }}</p>
+        </div>
+    @endif
+
 
     <div class="flex justify-center items-center">
         <div id="dash-first" class="text-center">
@@ -53,16 +59,32 @@
     </div>
 
     <div class="flex justify-center items-center">
-        <div id="dash-third">
+        <div id="dash-third" class="float-left">
             <form wire:submit.prevent="getOpenAI">
                 <!-- Otros campos aquí -->
                 <button type="submit" id="submitEmotion" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow-md transition duration-300 ease-in-out">
-                    CLICK FOR RESPONSE
+                    CLICK FOR DAILY RESPONSE
                 </button>
             </form>
             @if ($openAIResponse)
                 <div id="openAI-response" class="bg-green-300 p-4 rounded-lg">
                     <p>{{ $openAIResponse }}</p>
+                </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="flex justify-center items-center">
+        <div id="dash-fourth" class="float-right">
+            <form wire:submit.prevent="openResume">
+                <!-- Otros campos aquí -->
+                <button type="submit" id="submitEmotion" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow-md transition duration-300 ease-in-out">
+                    YOUR RESUME
+                </button>
+            </form>
+            @if ($generatedText)
+                <div id="summary" class="bg-green-300 p-4 rounded-lg">
+                    <p>{{ $generatedText }}</p>
                 </div>
             @endif
         </div>

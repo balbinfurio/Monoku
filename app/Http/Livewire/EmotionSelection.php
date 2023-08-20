@@ -15,6 +15,8 @@ class EmotionSelection extends Component
     public $emotions;
     public $writtenEntry;
     public $openAIResponse;
+    public $openAIResume;
+    public $generatedText = '';
 
 
     public function mount()
@@ -24,6 +26,12 @@ class EmotionSelection extends Component
     
     public function saveEmotion(Request $request)
     {
+
+        if (is_null($this->selectedEmotion) || empty($this->writtenEntry)) {
+            session()->flash('error', 'Please choose an emotion and tell us your thoughts.');
+            return;
+        }
+
         // Verificar si ya existe un registro para el usuario en el día actual
         $dailyEmotion = DailyEmotion::where('user_id', auth()->user()->id)
         ->whereDate('created_at', now()->format('Y-m-d'))
@@ -46,7 +54,7 @@ class EmotionSelection extends Component
         $result = $client->completions()->create([
             'model' => 'text-davinci-003',
             'prompt' => $this->writtenEntry,
-            'max_tokens' => 50
+            'max_tokens' => 5
         ]);
         
         $dailyEmotion->OpenAI = $result['choices'][0]['text'];
@@ -68,8 +76,43 @@ class EmotionSelection extends Component
             $this->openAIResponse = $dailyEmotion->OpenAI;
         }
     
-        // dd($this->openAIResponse);
 
+    }
+
+    public function openResume()
+    {
+        // Obtener todas las entradas de diario del usuario loggeado
+        $entries = DailyEmotion::where('user_id', auth()->user()->id)
+            ->orderBy('created_at', 'asc')
+            ->pluck('journal_entry', 'created_at')
+            ->toArray();
+
+        // Crear el resumen formateado
+        $summary = "These are the journal entries of a user who seeks help, treat him with respect and advise him:\n\n";
+        foreach ($entries as $created_at => $entry) {
+            $summary .= "{$created_at}\n{$entry}\n\n";
+        }
+
+        $yourApiKey = env('OPENAI_API_KEY');
+        $client = OpenAI::client($yourApiKey);
+        
+        try {
+            $openAIResume = $client->completions()->create([
+                'model' => 'text-davinci-003',
+                'prompt' => $summary,
+                'max_tokens' => 2
+            ]);
+        
+        } catch (\Exception $e) {
+            dd("Error: " . $e->getMessage());
+        }
+        $generatedText = $openAIResume->choices[0]->text;
+        
+        $this->generatedText = $generatedText;
+
+        $this->generatedText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+        
+        // dd($generatedText);
     }
     
     public function render()
