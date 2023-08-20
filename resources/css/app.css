@@ -20,17 +20,29 @@
 }
 
 #text-entry {
-    margin-left: 0px; /* Mueve el cuadro de texto hacia la derecha */
+    margin-left: 0px; 
 }
 
 #submitEmotion {
-    margin-top: 8px; /* Ajusta la distancia hacia abajo según tus preferencias */
-    margin-left: auto; /* Centra horizontalmente el botón */
+    margin-top: 8px; 
+    margin-left: auto; 
     margin-right: auto;
-    display: block; /* Convierte el botón en un bloque para centrarlo */
+    display: block; 
 }
 
+#dash-sec {
+    margin: 0;
+    padding: 0;
+    /* height: auto; */
+    height: 400px;
+}
 
+#openAI-response {
+    margin: 50px;
+    padding: 0;
+    height: auto;
+    /* height: 0px; */
+}
 
 .mt-2 {
     /* margin-top: 0px;  */
